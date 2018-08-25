@@ -1,5 +1,5 @@
 # Aiolia
-Aiolia - Course API
+Aiolia - Institution API
 
 
 ## Prerequisites
