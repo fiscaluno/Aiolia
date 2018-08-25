@@ -1,0 +1,10 @@
+{
+  "name": "Aiolia",
+  "description": "Course API",
+  "keywords": [
+    "fiscaluno",
+    "go"
+  ],
+  "website": "http://github.com/fiscaluno/aiolia",
+  "repository": "http://github.com/fiscaluno/aiolia"
+}
