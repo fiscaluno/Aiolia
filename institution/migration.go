@@ -7,7 +7,7 @@ func Migrate() {
 	db := db.Conn()
 	defer db.Close()
 
-	entity := new(Entity)
+	entity := new(Institution)
 
 	entity.Name = "Impacta"
 	entity.ImageURL = "https://www.impacta.edu.br/themes/wc_agenciar3/images/logo.png"
@@ -20,14 +20,14 @@ func Migrate() {
 	entity.Province = "SP"
 
 	// Migrate the schema
-	db.AutoMigrate(&entity)
+	db.AutoMigrate(&Institution{})
 
 	// Create
-	db.Create(&entity)
+	// db.Create(&entity)
 
 	// Read
 	// var entity Entity
-	db.First(&entity, 1) // find entity with id 1
+	// db.First(&entity, 1) // find entity with id 1
 	// db.First(&entity, "name = ?", "JC") // find entity with name JC
 
 	// Update - update entity's Name to SI

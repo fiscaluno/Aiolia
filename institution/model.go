@@ -1,45 +1,47 @@
 package institution
 
 import (
+	"time"
+
 	"github.com/fiscaluno/pandorabox/db"
 )
 
-// Institution is a Entity
+// Institution is a Institution
 type Institution struct {
-	Name          string  `json:"name"`
-	ImageURL      string  `json:"image_url"`
-	AverageRating float64 `json:"average_rating"`
-	RatedByCount  int     `json:"rated_by_count"`
-	Website       string  `json:"website"`
-	Cnpj          string  `json:"cnpj"`
-	Address       string  `json:"address"`
-	City          string  `json:"city"`
-	Province      string  `json:"province"`
+	ID            uint       `gorm:"primary_key" json:"id"`
+	Name          string     `json:"name"`
+	ImageURL      string     `json:"image_url"`
+	AverageRating float64    `json:"average_rating"`
+	RatedByCount  int        `json:"rated_by_count"`
+	Website       string     `json:"website"`
+	Cnpj          string     `json:"cnpj"`
+	Address       string     `json:"address"`
+	City          string     `json:"city"`
+	Province      string     `json:"province"`
+	CreatedAt     time.Time  `json:"created_at"`
+	UpdatedAt     time.Time  `json:"updated_at"`
+	DeletedAt     *time.Time `json:"deleted_at"`
 }
 
 // Emails        []string `json:"emails"`
 // Phones        []string `json:"phones"`
 
-// Entity is a course
-type Entity struct {
-	Institution
-	db.CommonModelFields
+// TableName for review
+func (Institution) TableName() string {
+	return "institution"
 }
 
-// Entitys is Entity slice
-type Entitys []Entity
-
-// GetAll Entitys
-func GetAll() Entitys {
+// GetAll []Institution
+func GetAll() []Institution {
 	db := db.Conn()
 	defer db.Close()
-	var entitys Entitys
-	db.Find(&entitys)
-	return entitys
+	var entities []Institution
+	db.Find(&entities)
+	return entities
 }
 
-// Save a Entity
-func (entity Entity) Save() (Entity, error) {
+// Save a Institution
+func (entity Institution) Save() (Institution, error) {
 	db := db.Conn()
 	defer db.Close()
 
@@ -48,25 +50,25 @@ func (entity Entity) Save() (Entity, error) {
 	return entity, nil
 }
 
-// GetByID a Entity
-func GetByID(id int) Entity {
+// GetByID a Institution
+func GetByID(id int) Institution {
 	db := db.Conn()
 	defer db.Close()
 
-	var entity Entity
+	var entity Institution
 
 	db.Find(&entity, id)
 
 	return entity
 }
 
-// GetByQuery a Entity
-func GetByQuery(query string, value interface{}) Entitys {
+// GetByQuery a Institution
+func GetByQuery(query string, value interface{}) []Institution {
 	db := db.Conn()
 	defer db.Close()
 
-	var entitys Entitys
+	var entities []Institution
 
-	db.Find(&entitys, query, value)
-	return entitys
+	db.Find(&entities, query, value)
+	return entities
 }

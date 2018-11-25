@@ -56,7 +56,7 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	db := db.Conn()
 	defer db.Close()
 
-	var entity Entity
+	var entity Institution
 	var msg pandorabox.Message
 
 	msg = pandorabox.Message{
@@ -86,7 +86,7 @@ func DeleteByID(w http.ResponseWriter, r *http.Request) {
 	db := db.Conn()
 	defer db.Close()
 
-	var entity Entity
+	var entity Institution
 	var msg pandorabox.Message
 
 	msg = pandorabox.Message{
@@ -129,7 +129,7 @@ func UpdateByID(w http.ResponseWriter, r *http.Request) {
 	db := db.Conn()
 	defer db.Close()
 
-	var entity Entity
+	var entity Institution
 	var msg pandorabox.Message
 
 	msg = pandorabox.Message{
