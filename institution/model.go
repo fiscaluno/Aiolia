@@ -21,6 +21,8 @@ type Institution struct {
 	CreatedAt     time.Time  `json:"created_at"`
 	UpdatedAt     time.Time  `json:"updated_at"`
 	DeletedAt     *time.Time `json:"deleted_at"`
+	Emails        string     `json:"emails"`
+	Phones        string     `json:"phones"`
 }
 
 // Emails        []string `json:"emails"`
